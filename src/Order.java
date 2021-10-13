@@ -61,17 +61,13 @@ public class Order {
 
         System.out.println("What order do you want to delete, enter the order ID");
 
-        for (Order e : listOfCurrentOrders) {
-            System.out.println(e);
-        }
+        showOrders();
 
         int orderToRemove = scanner.nextInt();
 
         listOfCurrentOrders.removeIf(order -> (order.orderId == orderToRemove ));
 
-        for (Order e : listOfCurrentOrders) {
-            System.out.println(e);
-        }
+        showOrders();
     }
 
     static void getMostPopularPizza(){
