@@ -2,10 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    /*
-    Author: Rasmus & Laura
-     */
-
+    /* Author: Rasmus & Laura */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int orderIdNumber = 0;
@@ -13,7 +10,7 @@ public class Main {
 
         do {
 
-            System.out.println("MARIOS PIZZABAR\n---------------------");
+            System.out.println("\nMARIOS PIZZABAR\n-----------------------");
             System.out.println("What would you like to do?");
 
             System.out.println("• Press 1 - Create Order\n• Press 2 - See all orders\n• Press 3 - Pick up order\n• Press 4 - Show intern statestics\n• Press 5 - Close for today");
@@ -38,7 +35,7 @@ public class Main {
                 Order.removeOrderFromList();
 
             } else if (userChoice == 4) {
-                System.out.println("4. SHOW INTERN STATESTICS:");
+                System.out.println("4. SHOW INTERN STATISTICS:");
 
                 Order.getMostPopularPizza();
 

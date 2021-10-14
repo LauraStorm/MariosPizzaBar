@@ -1,6 +1,4 @@
-    /*
-    Author: Simon
-     */
+    /* Author: Simon */
 
 public enum Ingrediens {
     TOMATSAUCE,

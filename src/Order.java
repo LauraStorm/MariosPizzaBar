@@ -25,9 +25,7 @@ public class Order {
 
 
     static Order getOrder(int orderIdNumber) {
-        /*
-        Author: Laura
-         */
+        /* Author: Laura */
         //Get number of pizzas to order
         System.out.println("\nHow many pizzas would you like? - please type the number:");
         int pizzaNumbersInOrder = scanner.nextInt();
@@ -35,9 +33,7 @@ public class Order {
         //Creating new Pizza Array - That can store chosen pizzas
         Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
 
-        /*
-        Author: Simon
-         */
+        /* Author: Simon */
         int i = 0;
         do {
             //Get pizza choice to store in the pizza array
@@ -51,9 +47,7 @@ public class Order {
 
         } while (i < pizzaNumbersInOrder);
 
-        /*
-        Author: Rasmus
-         */
+        /* Author: Rasmus */
         //Creating the Order object
         System.out.println("What is the order name?");
         String orderName = scanner.next();
@@ -74,18 +68,15 @@ public class Order {
         return order;
     }
 
-    /*
-    Author: Laura
-     */
+    /* Author: Laura */
     static void showOrders(){
-        for (Order e : listOfCurrentOrders) {
-            System.out.println(e);
+        for (Order order : listOfCurrentOrders) {
+            System.out.println(order);
         }
     }
 
-    /*
-    Authors: Laura & Rasmus
-     */
+
+    /* Authors: Laura & Rasmus */
     static void removeOrderFromList(){
         System.out.println("What order do you want to delete, enter the order ID");
 
@@ -100,9 +91,7 @@ public class Order {
         showOrders();
     }
 
-    /*
-    Author: simon
-     */
+    /* Author: Simon */
     // found this on : https://stackoverflow.com/questions/22911722/how-to-find-array-index-of-largest-value
     static int getIndexOfLargest( int[] array )
     //this method: finding the index with the most chosen pizza
@@ -117,16 +106,13 @@ public class Order {
         return largest; // position of the first largest found
     }
 
-    /*
-    Author: Simon
-     */
-
+    /* Author: Simon */
     static void getMostPopularPizza(){
-        System.out.println("The most ordered pizza today is: " + Pizza.getPizza(getIndexOfLargest(todaysPizzaCounter)));
+        System.out.println("The most ordered pizza today is:\n" + Pizza.getPizza(getIndexOfLargest(todaysPizzaCounter)));
     }
 
 
-
+    //toString
     @Override
     public String toString() {
         return this.orderId + ". Order "  +
@@ -136,4 +122,6 @@ public class Order {
                 ", pickupTime = " + pickupTime +
                 ", timeStamp=" + timeStamp ;
     }
+
+
 }

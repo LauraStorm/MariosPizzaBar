@@ -8,7 +8,7 @@ public class Pizza {
     private Ingrediens[] ingrediens;
     private int price;
 
-    //Constructor:
+    //Constructor
     public Pizza(int pizzaNumber, String pizzaName, Ingrediens[] ingrediens, int price) {
         this.pizzaNumber = pizzaNumber;
         this.pizzaName = pizzaName;
@@ -17,12 +17,9 @@ public class Pizza {
     }
 
 
-
     //Methods
 
-    /*
-    Author: Simon
-     */
+    /* Author: Simon */
     static Pizza getPizza(int inputPizzaNumber) {
         Pizza whatPizza = (inputPizzaNumber == 1) ? new Pizza(1, " Vesuvio", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.SKINKE, Ingrediens.OREGANO}, 57) :
                 (inputPizzaNumber == 2) ? new Pizza(2, " Amerikaner", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.OKSEFARS, Ingrediens.OREGANO}, 53) :
@@ -42,9 +39,7 @@ public class Pizza {
     }
 
 
-    /*
-    Author: Laura
-     */
+    /* Author: Laura */
     static void showMenuCard(){
         System.out.println("Pizza Menu Card:");
         Pizza [] menuCards = {getPizza(1),getPizza(2),getPizza(3),
@@ -57,7 +52,7 @@ public class Pizza {
 
     }
 
-    //toString:
+    //toString
     @Override
     public String toString() {
         return
