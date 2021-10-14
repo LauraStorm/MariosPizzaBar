@@ -1,3 +1,7 @@
+    /*
+    Author: Simon
+     */
+
 public enum Ingrediens {
     TOMATSAUCE,
     OST,

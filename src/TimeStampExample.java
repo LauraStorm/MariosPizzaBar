@@ -1,5 +1,8 @@
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+/*
+Author: Simon
+ */
 
 //Found the code on : https://mkyong.com/java/how-to-get-current-timestamps-in-java/
 public class TimeStampExample {
