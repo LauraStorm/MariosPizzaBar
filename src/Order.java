@@ -23,19 +23,22 @@ public class Order {
         this.timeStamp = timeStamp;
     }
 
-    //metode til at finde datoen plus den afhentningstiden(pickuptime)
-    //Nyt her fra https://www.javaprogramto.com/2020/04/java-add-minutes-to-date.html
+    //Methods
+
+    /* Author: Rasmus */
+    //her fra fhttps://www.javaprogramto.com/2020/04/java-add-minutes-to-date.html
     public Date getPickupTime(){
+        //metode til at finde datoen plus den afhentningstiden(pickuptime)
+
         Calendar date = Calendar.getInstance();
         long timeInSecs = date.getTimeInMillis();
         Date timeAfterAddingPickUpTime = new Date(timeInSecs + (pickupTime * 60 * 1000));
+
         return timeAfterAddingPickUpTime;
     }
 
     static Order getOrder(int orderIdNumber) {
-        /*
-        Author: Laura
-         */
+        /* Author: Laura */
         //Get number of pizzas to order
         System.out.println("\nHow many pizzas would you like? - please type the number:");
         int pizzaNumbersInOrder = scanner.nextInt();
@@ -43,9 +46,7 @@ public class Order {
         //Creating new Pizza Array - That can store chosen pizzas
         Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
 
-        /*
-        Author: Simon
-         */
+        /* Author: Simon */
         int i = 0;
         do {
             //Get pizza choice to store in the pizza array
@@ -59,9 +60,7 @@ public class Order {
 
         } while (i < pizzaNumbersInOrder);
 
-        /*
-        Author: Rasmus
-         */
+        /* Author: Rasmus */
         //Creating the Order object
         System.out.println("What is the order name?");
         String orderName = scanner.next();
@@ -82,17 +81,14 @@ public class Order {
         return order;
     }
 
-    /*
-    Author: Laura
-    nyt nyt
-     */
+    /* Author: Laura */
     static void showOrders(){
 
         if (listOfCurrentOrders.size() == 0){
             System.out.println("There are no orders!");
         }
 
-        //sortere ordrerne, så den ordre med den laveste timpstamp plus pickuptime kommer øverst
+        /* Author: Rasmus */
         Comparator<Order> orderSorting = Comparator.comparing(Order :: getPickupTime);
         listOfCurrentOrders.sort(orderSorting);
 
@@ -104,9 +100,7 @@ public class Order {
     }
 
 
-    /*
-    Authors: Laura & Rasmus
-     */
+    /* Authors: Laura & Rasmus */
     static void removeOrderFromList(){
         System.out.println("What order do you want to remove? - enter the order ID:");
 
@@ -121,9 +115,7 @@ public class Order {
         showOrders();
     }
 
-    /*
-    Author: simon
-     */
+    /* Author: Simon */
     // found this on : https://stackoverflow.com/questions/22911722/how-to-find-array-index-of-largest-value
     static int getIndexOfLargest( int[] array )
     //this method: finding the index with the most chosen pizza
@@ -138,19 +130,14 @@ public class Order {
         return largest; // position of the first largest found
     }
 
-    /*
-    Author: Simon
-     */
-
+    /* Author: Simon */
     static void getMostPopularPizza(){
         System.out.println("The most ordered pizza today is: " + Pizza.getPizza(getIndexOfLargest(todaysPizzaCounter)));
     }
 
 
-
-
-//nyt
-    // løber pizza arrayet igennem og kalder tostring metoden uden ingrediens på hvert pizza object
+    /* Author: Rasmus */
+    //toString
     @Override
     public String toString() {
         String pizzasString ="";

@@ -63,8 +63,8 @@ public class Pizza {
     }
 
 
-    //nyt
-    //toString metode uden ingrediens
+    /* Author: Rasmus */
+    //toString
     public String toStringPizzaOrder() {
         return
                 " Nr. " + pizzaNumber +
