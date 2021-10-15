@@ -1,7 +1,7 @@
+import jdk.jfr.Timespan;
+
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Order {
     //Attributes
@@ -9,13 +9,13 @@ public class Order {
     private Pizza[] pizzas;
     private int orderId;
     private String orderName;
-    private String pickupTime;
+    private int pickupTime;
     private static ArrayList<Order> listOfCurrentOrders = new ArrayList<Order>();
     private static int[] todaysPizzaCounter = new int[15];
     private Timestamp timeStamp;
 
     //Constructor
-    public Order(Pizza[] pizzas, int orderId, String orderName, String pickupTime, Timestamp timeStamp) {
+    public Order(Pizza[] pizzas, int orderId, String orderName, int pickupTime, Timestamp timeStamp) {
         this.pizzas = pizzas;
         this.orderId = orderId;
         this.orderName = orderName;
@@ -23,9 +23,19 @@ public class Order {
         this.timeStamp = timeStamp;
     }
 
+    //metode til at finde datoen plus den afhentningstiden(pickuptime)
+    //Nyt her fra https://www.javaprogramto.com/2020/04/java-add-minutes-to-date.html
+    public Date getPickupTime(){
+        Calendar date = Calendar.getInstance();
+        long timeInSecs = date.getTimeInMillis();
+        Date timeAfterAddingPickUpTime = new Date(timeInSecs + (pickupTime * 60 * 1000));
+        return timeAfterAddingPickUpTime;
+    }
 
     static Order getOrder(int orderIdNumber) {
-        /* Author: Laura */
+        /*
+        Author: Laura
+         */
         //Get number of pizzas to order
         System.out.println("\nHow many pizzas would you like? - please type the number:");
         int pizzaNumbersInOrder = scanner.nextInt();
@@ -33,7 +43,9 @@ public class Order {
         //Creating new Pizza Array - That can store chosen pizzas
         Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
 
-        /* Author: Simon */
+        /*
+        Author: Simon
+         */
         int i = 0;
         do {
             //Get pizza choice to store in the pizza array
@@ -47,12 +59,14 @@ public class Order {
 
         } while (i < pizzaNumbersInOrder);
 
-        /* Author: Rasmus */
+        /*
+        Author: Rasmus
+         */
         //Creating the Order object
         System.out.println("What is the order name?");
         String orderName = scanner.next();
         System.out.println("Please type when the wished pickup time is:");
-        String pickupTime = scanner.next();
+        int pickupTime = scanner.nextInt();
 
         Order order = new Order(pizzasInOrder, orderIdNumber, orderName, pickupTime, TimeStampExample.getTimeStamp());
 
@@ -68,15 +82,31 @@ public class Order {
         return order;
     }
 
-    /* Author: Laura */
+    /*
+    Author: Laura
+    nyt nyt
+     */
     static void showOrders(){
-        for (Order order : listOfCurrentOrders) {
-            System.out.println(order);
+
+        if (listOfCurrentOrders.size() == 0){
+            System.out.println("There are no orders");
+        }
+
+        //sortere ordrerne, så den ordre med den laveste timpstamp plus pickuptime kommer øverst
+        Comparator<Order> orderSorting = Comparator.comparing(Order :: getPickupTime);
+        listOfCurrentOrders.sort(orderSorting);
+
+        //printer ordrerne i rækkefølge + afhentningstidspunktet efter ordre-objektet
+        for (Order e : listOfCurrentOrders) {
+            System.out.println(e + "\nPickupTime: " + e.getPickupTime());
+
         }
     }
 
 
-    /* Authors: Laura & Rasmus */
+    /*
+    Authors: Laura & Rasmus
+     */
     static void removeOrderFromList(){
         System.out.println("What order do you want to delete, enter the order ID");
 
@@ -85,13 +115,15 @@ public class Order {
 
         //Remove order from list if input == orderID
         int orderToRemove = scanner.nextInt();
-        listOfCurrentOrders.removeIf(order -> (order.orderId == orderToRemove ));
+        listOfCurrentOrders.removeIf(order -> (order.orderId == orderToRemove));
 
         //show orders after removing an order
         showOrders();
     }
 
-    /* Author: Simon */
+    /*
+    Author: simon
+     */
     // found this on : https://stackoverflow.com/questions/22911722/how-to-find-array-index-of-largest-value
     static int getIndexOfLargest( int[] array )
     //this method: finding the index with the most chosen pizza
@@ -106,22 +138,28 @@ public class Order {
         return largest; // position of the first largest found
     }
 
-    /* Author: Simon */
+    /*
+    Author: Simon
+     */
+
     static void getMostPopularPizza(){
-        System.out.println("The most ordered pizza today is:\n" + Pizza.getPizza(getIndexOfLargest(todaysPizzaCounter)));
+        System.out.println("The most ordered pizza today is: " + Pizza.getPizza(getIndexOfLargest(todaysPizzaCounter)));
     }
 
 
-    //toString
+
+
+//nyt
+    // løber pizza arrayet igennem og kalder tostring metoden uden ingrediens på hvert pizza object
     @Override
     public String toString() {
-        return this.orderId + ". Order "  +
-                "= " + Arrays.toString(pizzas) +
-                ", orderId = " + orderId +
-                ", orderName = '" + orderName + '\'' +
-                ", pickupTime = " + pickupTime +
-                ", timeStamp=" + timeStamp ;
+        String pizzasString ="";
+        for (int i = 0; i < pizzas.length; i++) {
+            pizzasString += "\n" + pizzas[i].toStringPizzaOrder();
+        }
+        return "\n" + this.orderId + ". Order "  +
+                "= " +
+                " OrderId: " + orderId +
+                ", OrderName: " + orderName + pizzasString;
     }
-
-
 }

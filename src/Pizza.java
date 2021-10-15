@@ -59,8 +59,18 @@ public class Pizza {
                 "Nr. " + pizzaNumber +
                 ".  " + pizzaName  +
                 " " + Arrays.toString(ingrediens) +
-                " price: " + price + "kr.";
+                " Price: " + price + "kr.";
     }
+
+
+    //nyt
+    //toString metode uden ingrediens
+    public String toStringPizzaOrder() {
+        return
+                " Nr. " + pizzaNumber +
+                        ". " + pizzaName;
+    }
+
 }
 
 
