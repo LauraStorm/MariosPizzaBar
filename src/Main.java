@@ -13,7 +13,7 @@ public class Main {
             System.out.println("\nMARIOS PIZZABAR\n-----------------------");
             System.out.println("What would you like to do?");
 
-            System.out.println("• Press 1 - Create Order\n• Press 2 - See all orders\n• Press 3 - Pick up order\n• Press 4 - Show intern statestics\n• Press 5 - Close for today");
+            System.out.println("• Press 1 - Create order\n• Press 2 - see all Orders\n• Press 3 - Pick up order\n• Press 4 - Show intern statistics\n• Press 5 - Close for today");
             userChoice = scanner.nextInt();
 
             if (userChoice == 1) {

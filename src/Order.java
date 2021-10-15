@@ -65,7 +65,7 @@ public class Order {
         //Creating the Order object
         System.out.println("What is the order name?");
         String orderName = scanner.next();
-        System.out.println("Please type when the wished pickup time is:");
+        System.out.println("When can you pick up the order? - type in minutes:");
         int pickupTime = scanner.nextInt();
 
         Order order = new Order(pizzasInOrder, orderIdNumber, orderName, pickupTime, TimeStampExample.getTimeStamp());
@@ -74,7 +74,7 @@ public class Order {
         listOfCurrentOrders.add(order);
 
         //Print overview of pizzas in the order
-        System.out.println("These are the ordered pizza's:");
+        System.out.println("These are the ordered pizzas:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
 
@@ -89,7 +89,7 @@ public class Order {
     static void showOrders(){
 
         if (listOfCurrentOrders.size() == 0){
-            System.out.println("There are no orders");
+            System.out.println("There are no orders!");
         }
 
         //sortere ordrerne, så den ordre med den laveste timpstamp plus pickuptime kommer øverst
@@ -108,7 +108,7 @@ public class Order {
     Authors: Laura & Rasmus
      */
     static void removeOrderFromList(){
-        System.out.println("What order do you want to delete, enter the order ID");
+        System.out.println("What order do you want to remove? - enter the order ID:");
 
         //show orders before removing an order
         showOrders();
@@ -159,7 +159,7 @@ public class Order {
         }
         return "\n" + this.orderId + ". Order "  +
                 "= " +
-                " OrderId: " + orderId +
-                ", OrderName: " + orderName + pizzasString;
+                " Id: " + orderId +
+                ", Name: " + orderName + pizzasString;
     }
 }
